@@ -1,0 +1,310 @@
+<!DOCTYPE HTML>
+<HTML>
+ <HEAD>
+  <TITLE>e and Poisson</TITLE>
+  <META NAME="generator" CONTENT="wxMaxima">
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    displayAlign: "left",
+    context: "MathJax",
+    TeX: {TagSide: "left"}
+  })
+</script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+</script>
+  <link rel="stylesheet" type="text/css" href="e and Poisson_htmlimg/e and Poisson.css"/>
+ </HEAD>
+ <BODY>
+
+<!-- ***************************************************** -->
+<!--          Created with wxMaxima version 17.10.1         -->
+<!-- ***************************************************** -->
+<noscript><div class="error message">    Please enable JavaScript in order to get a 2d display of the equations embedded in this web page.</div></noscript>\(      \DeclareMathOperator{\abs}{abs}
+      \newcommand{\ensuremath}[1]{\mbox{$#1$}}
+\)
+
+<!-- Title cell -->
+
+
+<P CLASS="title">
+e and Poisson Distribution
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+--relevant proof using CAS<BR>
+</P>
+
+
+<!-- Section cell -->
+
+
+<P CLASS="section">
+ 1 Definition of e and evaluations
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+Evaluate numerically, the sum of 2 infinite series<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i2)	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">f1</span>(<span class="code_variable">n</span>)<span class="code_operator">:</span><span class="code_operator">=</span>(<span class="code_number">1</span><span class="code_operator">+</span><span class="code_number">1</span><span class="code_operator">/</span><span class="code_variable">n</span>)<span class="code_operator">^</span><span class="code_variable">n</span><BR>
+<span class="code_endofline">;</span><BR>
+<span class="code_function">f2</span>(<span class="code_variable">n</span>)<span class="code_operator">:</span><span class="code_operator">=</span><span class="code_function">sum</span>(<span class="code_number">1</span><span class="code_operator">/</span><span class="code_variable">k</span><span class="code_operator">!</span>,<span class="code_variable">k</span>,<span class="code_number">0</span>,<span class="code_variable">n</span>)<span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{%o1} \operatorname{f1}(n):={{\left( 1+\frac{1}{n}\right) }^{n}}\]
+\[\tag{%o2} \operatorname{f2}(n):=\sum_{k=0}^{n}{\left. \frac{1}{k!}\right.}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i3)	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">sum</span>(<span class="code_function">f1</span>(<span class="code_variable">n</span>), <span class="code_variable">n</span>, <span class="code_number">0</span>, <span class="code_variable">inf</span>), <span class="code_variable">simpsum</span><span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{%o3} \sum_{n=0}^{\infty }{\left. {{\left( \frac{1}{n}+1\right) }^{n}}\right.}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i4)	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<BR>
+<span class="code_function">limit</span>(<span class="code_function">f1</span>(<span class="code_variable">n</span>), <span class="code_variable">n</span>, <span class="code_variable">inf</span>)<span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{%o4} \% e\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i5)	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">sum</span>(<span class="code_number">1</span><span class="code_operator">/</span><span class="code_variable">k</span><span class="code_operator">!</span>, <span class="code_variable">k</span>, <span class="code_number">0</span>, <span class="code_variable">inf</span>), <span class="code_variable">simpsum</span><span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{%o5} \sum_{k=0}^{\infty }{\left. \frac{1}{k!}\right.}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i7)	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">bfloat</span>(<span class="code_function">f2</span>(<span class="code_number">100</span>))<span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{%o6} 2.718281828459045b0\]
+\[\tag{%o7} \operatorname{wxprint}\left( 2.718281828459045b0\right) \]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i18)	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">bfloat</span>(<span class="code_variable">%e</span>)<span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{%o18} 2.718281828459045b0\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+ -->	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">wxplot2d</span>([(<span class="code_number">1</span><span class="code_operator">+</span><span class="code_number">1</span><span class="code_operator">/</span><span class="code_variable">n</span>)<span class="code_operator">^</span><span class="code_variable">n</span>,<span class="code_variable">%e</span>,<span class="code_function">sum</span>((<span class="code_number">1</span><span class="code_operator">/</span><span class="code_variable">k</span><span class="code_operator">!</span>),<span class="code_variable">k</span>,<span class="code_number">0</span>,<span class="code_variable">n</span>)], [<span class="code_variable">n</span>,<span class="code_number">0</span>,<span class="code_number">10</span>], [<span class="code_variable">y</span>,<span class="code_number">0</span>,<span class="code_number">3</span><span class="code_number">.</span><span class="code_number">5</span>])<span class="code_endofline">$</span>  </SPAN></TD>
+</TR></TABLE>
+\[\mbox{}\\\mbox{plot2d: e}\mbox{}\\\mbox{xpression evaluates to non-num}\mbox{}\\\mbox{eric value somewhere in plotting rang}\mbox{}\\e.\]
+\[\tag{%t5} \]
+  <img src="e and Poisson_htmlimg/e and Poisson_10.png" width="598" style="max-width:90%;" alt=" (Graphics) " ><BR/>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i16)	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">wxplot2d</span>([<span class="code_variable">%e</span><span class="code_operator">^</span><span class="code_variable">x</span>,<span class="code_number">1</span>,<span class="code_variable">%e</span>],[<span class="code_variable">x</span>,<span class="code_number">−</span><span class="code_number">3</span>,<span class="code_number">3</span>],[<span class="code_variable">ylabel</span>, <span class="code_string">&quot;e^x&quot;</span>])<span class="code_endofline">$</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{%t16} \]
+  <img src="e and Poisson_htmlimg/e and Poisson_12.png" width="598" style="max-width:90%;" alt=" (Graphics) " ><BR/>
+
+
+
+<!-- Section cell -->
+
+
+<P CLASS="section">
+ 2 Properties of e
+</P>
+
+
+<!-- Subsection cell -->
+
+
+<P CLASS="subsect">
+ &nbsp;2.1 Derivative of e^x a^x and x^x
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i21)	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">diff</span>(<span class="code_variable">%e</span><span class="code_operator">^</span><span class="code_variable">x</span>,<span class="code_variable">x</span>,<span class="code_number">1</span>)<span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{%o21} {{\% e}^{x}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i22)	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">diff</span>(<span class="code_variable">a</span><span class="code_operator">^</span><span class="code_variable">x</span>,<span class="code_variable">x</span>,<span class="code_number">1</span>)<span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{%o22} {{a}^{x}}\, \log{(a)}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+ -->	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+e.g. Find the minimum value of f(x)=x^x<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i23)	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">f</span>(<span class="code_variable">x</span>)<span class="code_operator">:</span><span class="code_operator">=</span><span class="code_variable">x</span><span class="code_operator">^</span><span class="code_variable">x</span><span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{%o23} \operatorname{f}(x):={{x}^{x}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i25)	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">wxplot2d</span>(<span class="code_function">f</span>(<span class="code_variable">x</span>),[<span class="code_variable">x</span>,<span class="code_number">0</span>,<span class="code_number">2</span>])<span class="code_endofline">$</span>  </SPAN></TD>
+</TR></TABLE>
+\[\mbox{}\\\mbox{plot2d: expression evaluate}\mbox{}\\\mbox{s to non-numeric value somewhere in plotting range.}\]
+\[\tag{%t25} \]
+  <img src="e and Poisson_htmlimg/e and Poisson_18.png" width="598" style="max-width:90%;" alt=" (Graphics) " ><BR/>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i31)	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">dfdx</span><span class="code_operator">:</span><span class="code_function">diff</span>(<span class="code_function">f</span>(<span class="code_variable">x</span>),<span class="code_variable">x</span>,<span class="code_number">1</span>)<span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{dfdx}{{x}^{x}}\, \left( \log{(x)}+1\right) \]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+From which we know that x^x&gt;0 so,<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i38)	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">solve</span>([<span class="code_function">log</span>(<span class="code_variable">x</span>)<span class="code_operator">+</span><span class="code_number">1</span><span class="code_operator">=</span><span class="code_number">0</span>],<span class="code_variable">x</span>)<span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{%o38} [x={{\% e}^{-1}}]\]
+
+
+<!-- Subsection cell -->
+
+
+<P CLASS="subsect">
+ &nbsp;2.2 Shape of the cable
+</P>
+
+ <HR>
+ <SMALL> Created with <A HREF="https://andrejv.github.io/wxmaxima/">wxMaxima</A>.</SMALL>
+ </BODY>
+</HTML>
